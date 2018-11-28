@@ -1,0 +1,51 @@
+{% extends 'base/base.html' %}
+{% load  cache %}
+{% load staticfiles %}
+{% block title %}
+    首页
+{% endblock %}
+{% block page_css %}
+    <link href="{% static 'css/swiper.css' %}" rel="stylesheet">
+    <link href="{% static 'css/index.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block page_jq %}
+    <script src="{% static 'js/swiper.js' %}"></script>
+    <script type="text/javascript">
+        $(function () {
+            let swiper = new Swiper('.swiper-container', {
+                spaceBetween: 30,
+                loop: true,
+                centeredSlides: true,
+                autoplay: {
+                    delay: 1000,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+            });
+        })
+    </script>
+{% endblock %}
+
+{% block page_head %}
+    {% include 'include/common/top.html' %}
+    {% include 'include/common/search.html' %}
+    {% include 'include/navgation.html' %}
+    <p>商品分类</p>
+    {% include 'include/cate.html' %}
+    {% include 'include/banner.html' %}
+
+{% endblock %}
+{% block page_main %}
+    {% include 'include/content.html' %}
+{% endblock %}
+{% block page_footer %}
+
+{% endblock %}

@@ -1,0 +1,103 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block page_head %}
+    {% include 'include/common/top.html' %}
+{% endblock %}
+
+{% block page_css %}
+    <style type="text/css">
+        .shop_img_small {
+
+        }
+
+        .shop_img_small > li {
+            float: left;
+        }
+
+        .shop_img_small {
+            width: 50%;
+            float: left;
+            text-align: center;
+        }
+
+        .shop_detail_img {
+            width: 50%;
+            float: left;
+        }
+
+        .shop_detail_img {
+            width: 50%;
+            float: left;
+        }
+
+        {#内联元素#}
+        #shop_property > div {
+            display: inline-block;
+            width: 30%;
+        }
+
+    </style>
+{% endblock %}
+{% block page_jq %}
+    <script type="text/javascript">
+        $(function () {
+            $('#shop_img_small>li').mouseover(function () {
+                let index = $(this).index();
+                for (let i = 0; i < $('#shop_img_middle>li').length; i++) {
+                    {#表示被选中#}
+                    if (index === i) {
+                        $('#shop_img_middle>li')[i].style.setProperty('display', 'block')
+                    } else {
+                        $('#shop_img_middle>li')[i].style.setProperty('display', 'none');
+                        {#  其他的要隐藏#}
+                    }
+                }
+
+            })
+
+        })
+
+
+    </script>
+{% endblock %}
+{% block page_main %}
+    <img src="">
+    {% include 'include/shop_content.html' %}
+    <div>
+        <span>商品详情</span>
+        <span>评价{{ reviews|length }}</span>
+        <div id="shop_detail">
+            <span>产品参数</span>
+            <div id="shop_property">
+                {% for value in values %}
+                    <div class="">
+                        <span>{{ value.property.name }}</span>
+                        <span>{{ value.value }}</span>
+                    </div>
+                {% endfor %}
+            </div>
+            <div id="shop_detail_img">
+                {% for img in shop.imgs %}
+                    {% if img.type == 'type_detail' %}
+                        <img src="/static/img/detail/{{ img.shop_img_id }}.jpg">
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+
+        <div id="shop_detail_review">
+            {% for review in reviews %}
+                <p>
+                    {{ review.content }}
+                    {{ review.create_date|date:'Y-m-d' }}
+                    {{ review.user.user.username }}
+                </p>
+
+            {% endfor %}
+
+
+        </div>
+
+
+    </div>
+{% endblock %}

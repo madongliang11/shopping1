@@ -1,0 +1,19 @@
+<div id="cate" class="cate">
+    <ul class="main_menu">
+        {% for cate in cate_list %}
+            <li>
+                <a href="#">{{ cate.name }}</a>
+                <ul class="sub-menu1">
+                    {% for sub_menu in cate.sub_menus %}
+                        <li>{{ sub_menu.name }}</li>
+                        <ul class="sub-menu2 clear">
+                            {% for sub_menu2 in sub_menu.sub_menu2 %}
+                                <li>{{ sub_menu2 }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+</div>

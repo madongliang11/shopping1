@@ -1,0 +1,40 @@
+.top {
+    background: #f2f2f2;
+    padding: 15px 5px;
+}
+
+.top span, .top a {
+    padding: 5px;
+}
+
+.shop > li {
+    float: left;
+}
+
+.main_menu{
+    position: relative;
+
+}
+
+.sub-menu1{
+    position: absolute;
+    top: 0px;
+    left: 80px;
+    display: none;
+}
+.main_menu>li:hover .sub-menu1{
+    display: block;
+}
+.sub-menu2{
+
+}
+
+.sub-menu2>li{
+    float: left;
+    padding: 5px;
+}
+
+.search_box{
+    display: inline-block;
+}
+
